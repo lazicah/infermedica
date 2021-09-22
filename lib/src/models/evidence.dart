@@ -17,7 +17,17 @@ abstract class Evidence implements Built<Evidence, EvidenceBuilder> {
 
   Evidence._();
 
-  factory Evidence([void Function(EvidenceBuilder) updates]) = _$Evidence;
+  factory Evidence(
+          {required String id,
+          required ChoiceId choiceId,
+          String? observedAt,
+          SourceType? source}) =>
+      _$Evidence._(
+        id: id,
+        choiceId: choiceId,
+        observedAt: observedAt,
+        source: source,
+      );
 
   String toJson() {
     return json.encode(serializers.serializeWith(Evidence.serializer, this));

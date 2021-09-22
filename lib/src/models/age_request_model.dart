@@ -13,8 +13,8 @@ abstract class AgeRequestModel
 
   AgeRequestModel._();
 
-  factory AgeRequestModel([void Function(AgeRequestModelBuilder) updates]) =
-      _$AgeRequestModel;
+  factory AgeRequestModel({required int value,AgeUnit? unit}) =>
+      _$AgeRequestModel._(value: value,unit: unit,);
 
   String toJson() {
     return json

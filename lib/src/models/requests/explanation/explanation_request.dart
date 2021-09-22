@@ -15,7 +15,7 @@ abstract class ExplanationRequest
     implements Built<ExplanationRequest, ExplanationRequestBuilder> {
   SexType get sex;
   AgeRequestModel get age;
-  BuiltList<Evidence> get evidence;
+  BuiltList<Evidence>? get evidence;
   JsonObject? get extras;
   String get target; // target condition id ,
   @BuiltValueField(wireName: 'evaluated_at')
@@ -24,8 +24,19 @@ abstract class ExplanationRequest
   ExplanationRequest._();
 
   factory ExplanationRequest(
-          [void Function(ExplanationRequestBuilder) updates]) =
-      _$ExplanationRequest;
+          {required SexType sex,
+          required AgeRequestModel age,
+          required String target,
+          List<Evidence>? evidence,
+          Map<String, dynamic>? extras,
+          String? evaluatedAt}) =>
+      _$ExplanationRequest._(
+          sex: sex,
+          age: age,
+          evidence: BuiltList(evidence!),
+          extras: JsonObject(extras),
+          evaluatedAt: evaluatedAt,
+          target: target);
 
   String toJson() {
     return json

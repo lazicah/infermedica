@@ -23,8 +23,22 @@ abstract class ParseRequest
 
   ParseRequest._();
 
-  factory ParseRequest([void Function(ParseRequestBuilder) updates]) =
-      _$ParseRequest;
+  factory ParseRequest({
+    required AgeRequestModel age,
+    required String text,
+    SexType? sex,
+    bool? includeTokens,
+    bool? correctSpelling,
+    List<String>? conceptTypes,
+  }) =>
+      _$ParseRequest._(
+        age: age,
+        text: text,
+        sex: sex,
+        includeTokens: includeTokens,
+        correctSpelling: correctSpelling,
+        conceptTypes: BuiltList(conceptTypes!),
+      );
 
   String toJson() {
     return json

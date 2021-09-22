@@ -23,8 +23,16 @@ abstract class RationaleRequest
 
   RationaleRequest._();
 
-  factory RationaleRequest([void Function(RationaleRequestBuilder) updates]) =
-      _$RationaleRequest;
+  factory RationaleRequest({required SexType sex,
+          required AgeRequestModel age,
+          List<Evidence>? evidence,
+          Map<String, dynamic>? extras,
+          String? evaluatedAt,}) =>
+      _$RationaleRequest._( sex: sex,
+        age: age,
+        evidence: BuiltList(evidence!),
+        extras: JsonObject(extras),
+        evaluatedAt: evaluatedAt,);
 
   String toJson() {
     return json

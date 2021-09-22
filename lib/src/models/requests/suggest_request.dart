@@ -24,8 +24,22 @@ abstract class SuggestRequest
 
   SuggestRequest._();
 
-  factory SuggestRequest([void Function(SuggestRequestBuilder) updates]) =
-      _$SuggestRequest;
+  factory SuggestRequest({
+    required SexType sex,
+    required AgeRequestModel age,
+    required SuggestMethods suggestMethod,
+    List<Evidence>? evidence,
+    Map<String, dynamic>? extras,
+    String? evaluatedAt,
+  }) =>
+      _$SuggestRequest._(
+        sex: sex,
+        age: age,
+        evidence: BuiltList(evidence!),
+        extras: JsonObject(extras),
+        evaluatedAt: evaluatedAt,
+        suggestMethod: suggestMethod,
+      );
 
   String toJson() {
     return json

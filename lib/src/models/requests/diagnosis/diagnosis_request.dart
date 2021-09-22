@@ -22,8 +22,19 @@ abstract class DiagnosisRequest
 
   DiagnosisRequest._();
 
-  factory DiagnosisRequest([void Function(DiagnosisRequestBuilder) updates]) =
-      _$DiagnosisRequest;
+  factory DiagnosisRequest(
+          {required SexType sex,
+          required AgeRequestModel age,
+          List<Evidence>? evidence,
+          Map<String, dynamic>? extras,
+          String? evaluatedAt}) =>
+      _$DiagnosisRequest._(
+        sex: sex,
+        age: age,
+        evidence: BuiltList(evidence!),
+        extras: JsonObject(extras),
+        evaluatedAt: evaluatedAt,
+      );
 
   String toJson() {
     return json
